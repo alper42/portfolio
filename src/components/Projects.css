@@ -1,0 +1,38 @@
+.projects { background: var(--bg2); padding: 7rem 4rem; }
+.projects-list { display: flex; flex-direction: column; }
+.project-item {
+  display: flex; align-items: center; gap: 1.5rem;
+  padding: 2rem 0; border-bottom: 1px solid var(--border);
+  cursor: none; transition: padding 0.35s;
+}
+.project-item:hover { padding-left: 1rem; }
+.project-num { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-dim); flex-shrink: 0; }
+.project-info { flex: 1; }
+.project-meta { display: flex; gap: 1rem; align-items: center; margin-bottom: 0.5rem; }
+.project-type {
+  font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent);
+  background: rgba(0,229,160,0.08); border: 1px solid rgba(0,229,160,0.2);
+  padding: 0.2rem 0.6rem; border-radius: 4px;
+}
+.project-year { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-dim); }
+.project-title {
+  font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.5rem;
+  transition: color 0.35s;
+}
+.project-item:hover .project-title { color: var(--accent); }
+.project-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; max-width: 600px; margin-bottom: 0.75rem; }
+.project-stack { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.project-stack span { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-dim); }
+.project-arrow {
+  font-size: 1.5rem; color: var(--text-dim); transition: transform 0.35s, color 0.35s; margin-left: 2rem;
+}
+.project-item:hover .project-arrow { transform: translate(4px,-4px); color: var(--accent); }
+.section-label {
+  font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 1.5rem;
+}
+.section-title {
+  font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800;
+  letter-spacing: -0.03em; margin-bottom: 3.5rem;
+}
+@media (max-width: 900px) { .projects { padding: 5rem 2rem; } }

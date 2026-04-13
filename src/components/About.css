@@ -1,0 +1,48 @@
+.about { background: var(--bg2); padding: 7rem 4rem; }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.about-text h2 {
+  font-size: clamp(2rem, 4vw, 3rem); font-weight: 800;
+  letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 1.5rem;
+}
+.about-text h2 em { font-style: italic; color: var(--accent); }
+.about-text p { color: var(--text-muted); line-height: 1.8; margin-bottom: 1rem; }
+.about-stats {
+  display: flex; gap: 2.5rem; margin-top: 2.5rem;
+  padding-top: 2rem; border-top: 1px solid var(--border);
+}
+.stat { display: flex; flex-direction: column; gap: 0.3rem; }
+.stat-num {
+  font-size: 2.5rem; font-weight: 800; color: var(--accent); line-height: 1;
+}
+.stat-num::after { content: '+'; font-size: 1.5rem; }
+.stat-label { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); }
+
+.avatar-box { position: relative; width: 340px; height: 340px; margin: auto; }
+.avatar-inner {
+  position: absolute; inset: 30px; background: var(--surface);
+  border: 1px solid var(--border); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+.avatar-initials { font-size: 3rem; font-weight: 800; color: var(--accent); letter-spacing: 0.1em; }
+.avatar-ring {
+  position: absolute; inset: 0; border-radius: 50%;
+  border: 2px dashed rgba(0,229,160,0.2);
+  animation: spin 20s linear infinite;
+}
+.avatar-tag {
+  position: absolute; font-family: var(--font-mono); font-size: 0.7rem;
+  background: var(--surface2); border: 1px solid var(--border);
+  color: var(--text); padding: 0.3rem 0.8rem; border-radius: 999px; white-space: nowrap;
+}
+.tag-1 { top: 0; left: 50%; transform: translateX(-50%); }
+.tag-2 { left: 0; top: 50%; transform: translateY(-50%); }
+.tag-3 { right: -10px; top: 50%; transform: translateY(-50%); }
+.section-label {
+  font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 1.5rem;
+}
+@media (max-width: 900px) {
+  .about { padding: 5rem 2rem; }
+  .about-grid { grid-template-columns: 1fr; }
+  .about-image { display: none; }
+}
