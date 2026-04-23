@@ -10,7 +10,7 @@ const SKILLS = [
   {
     icon: '🌐', title: 'Web-Entwicklung', category: 'web',
     desc: 'Performante, responsive Websites und Webanwendungen von Frontend bis Backend.',
-    tags: ['Next.js', 'TypeScript', 'Node.js'],
+    tags: ['Next.js', 'JavaScript', 'Node.js'],
   },
   {
     icon: '🎨', title: 'UI/UX Design', category: 'design',
