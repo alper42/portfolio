@@ -4,6 +4,8 @@ import './Contact.css';
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const [form, setForm] = useState({ name: '', email: '', message: '' });
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -19,10 +21,33 @@ export default function Contact() {
     return () => observer.disconnect();
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setTimeout(() => { setLoading(false); setSubmitted(true); }, 1200);
+    setError(false);
+
+    try {
+      const res = await fetch('https://portfolio-backend-um5v.onrender.com/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+
+      const data = await res.json();
+      if (data.success) {
+        setSubmitted(true);
+      } else {
+        setError(true);
+      }
+    } catch (err) {
+      setError(true);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -43,17 +68,43 @@ export default function Contact() {
             <div className="form-row">
               <div className="form-group">
                 <label>Name</label>
-                <input type="text" placeholder="Dein Name" required />
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Dein Name"
+                  value={form.name}
+                  onChange={handleChange}
+                  required
+                />
               </div>
               <div className="form-group">
                 <label>E-Mail</label>
-                <input type="email" placeholder="deine@email.de" required />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="deine@email.de"
+                  value={form.email}
+                  onChange={handleChange}
+                  required
+                />
               </div>
             </div>
             <div className="form-group">
               <label>Nachricht</label>
-              <textarea placeholder="Erzähl mir von deinem Projekt..." rows={5} required />
+              <textarea
+                name="message"
+                placeholder="Erzähl mir von deinem Projekt..."
+                rows={5}
+                value={form.message}
+                onChange={handleChange}
+                required
+              />
             </div>
+            {error && (
+              <p style={{ color: '#ff5f57', marginBottom: '1rem', fontFamily: 'var(--font-mono)', fontSize: '0.85rem' }}>
+                ❌ Fehler beim Senden. Bitte versuche es erneut.
+              </p>
+            )}
             <button type="submit" className="btn-primary submit-btn" disabled={loading}>
               <span>{loading ? 'Wird gesendet...' : 'Nachricht senden'}</span>
               <span className="btn-icon">→</span>
