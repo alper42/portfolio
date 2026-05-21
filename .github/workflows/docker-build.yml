@@ -22,6 +22,9 @@ jobs:
       - name: Dependencies installieren
         run: npm install
 
+      - name: Tests ausführen
+        run: npm run test -- --run
+
       - name: App bauen
         run: npm run build
 
@@ -29,4 +32,4 @@ jobs:
         run: docker build -t portfolio-frontend .
 
       - name: Erfolg melden
-        run: echo "Build erfolgreich! App ist bereit."
+        run: echo "Alle Tests bestanden und Build erfolgreich!"
