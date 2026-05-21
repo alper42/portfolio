@@ -1,0 +1,32 @@
+name: Build and Test Portfolio
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Code herunterladen
+        uses: actions/checkout@v3
+
+      - name: Node.js installieren
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Dependencies installieren
+        run: npm install
+
+      - name: App bauen
+        run: npm run build
+
+      - name: Docker Image bauen
+        run: docker build -t portfolio-frontend .
+
+      - name: Erfolg melden
+        run: echo "Build erfolgreich! App ist bereit."
