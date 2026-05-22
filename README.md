@@ -1,4 +1,4 @@
-# Portfolio WebApp – Alper Caliskan
+# Portfolio WebApp
 
 Eine moderne, vollständig selbst entwickelte Portfolio-Website, bestehend aus einem React-Frontend und einem Node.js-Backend. Das Projekt demonstriert den kompletten Entwicklungszyklus – von der UI-Entwicklung über Backend-Integration bis hin zu Tests, Docker-Containerisierung und automatisiertem Deployment.
 
@@ -64,66 +64,6 @@ portfolio-backend/          # Backend (Node.js + Express)
 ├── server.js               # Express-Server mit /send Endpoint
 ├── Dockerfile.backend
 └── package.json
-```
-
----
-
-## Installation & lokale Entwicklung
-
-### Voraussetzungen
-- Node.js 20+
-- Docker (optional)
-
-### Frontend
-
-```bash
-# Repository klonen
-git clone https://github.com/alper42/portfolio.git
-cd portfolio
-
-# Dependencies installieren
-npm install
-
-# Entwicklungsserver starten
-npm run dev
-```
-
-### Backend
-
-```bash
-cd portfolio-backend
-
-# Dependencies installieren
-npm install
-
-# .env Datei erstellen
-cp .env.example .env
-# RESEND_API_KEY eintragen
-
-# Server starten
-npm run dev
-```
-
-### Mit Docker
-
-```bash
-# Frontend
-docker build -t portfolio-frontend .
-
-# Backend
-docker build -f Dockerfile.backend -t portfolio-backend .
-docker run -p 3001:3001 --env-file .env portfolio-backend
-```
-
----
-
-## Umgebungsvariablen
-
-Für das Backend wird eine `.env` Datei benötigt:
-
-```env
-RESEND_API_KEY=dein_api_key
-PORT=3001
 ```
 
 ---
